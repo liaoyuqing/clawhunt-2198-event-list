@@ -1,0 +1,40 @@
+﻿=== clean checkout (git archive HEAD, no node_modules) ===
+$ npm install
+EXIT=0
+
+$ npx tsc -p tsconfig.json --noEmit
+
+EXIT=0
+
+$ npx vitest run
+node.exe : [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cj
+s-node-api-deprecated for more details.[39m
+At line:1 char:1
++ & "E:\node-v26/node.exe" "E:\node-v26/node_modules/npm/bin/npx-cli.js ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([33mThe CJS bu...e details.[39m:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+ RUN  v2.1.8 E:/AI接单/Clawhunt/delivery/work/2198/clean
+
+ ✓ tests/params.spec.ts (6 tests) 3ms
+ ✓ tests/feed-controller.spec.ts (19 tests) 487ms
+
+ Test Files  2 passed (2)
+      Tests  25 passed (25)
+   Start at  14:04:19
+   Duration  3.36s (transform 140ms, setup 0ms, collect 178ms, tests 490ms, environment 0ms, prepare 163ms)
+
+
+EXIT=0
+
+$ npm run build
+
+> clawhunt-2198-event-list@1.0.0 build
+> tsc -p tsconfig.build.json && node scripts/copy-assets.js && node scripts/copy-tdesign.js
+
+[build] copied 12 static assets to miniprogram/
+[build] tdesign-miniprogram -> miniprogram/miniprogram_npm/tdesign-miniprogram
+
+EXIT=0
