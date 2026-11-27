@@ -1,0 +1,13 @@
+# AC4 截图可见空分栏、筛选无结果、网络错误三种状态
+# 取证方式：微信开发者工具模拟器真机截图（simulator_screenshot），页面通过 mock 场景参数切换
+
+## 三种状态截图（均为模拟器真截图）
+- 空分栏（该分栏暂无活动）：evidence/ac4-empty-tab.jpg   状态=empty-tab   emptyText=该分栏暂无活动   showClearFilter=false   items=0
+- 筛选无结果：evidence/ac4-empty-filter.jpg   状态=empty-filter   emptyText=筛选无结果   showClearFilter=true（有清除筛选按钮）   items=0
+- 网络错误：evidence/ac4-network-error.jpg   状态=error   文案=网络错误，请稍后重试   showNoMore=false
+- 附加：没有更多了（翻到末页）：evidence/ac4-no-more.jpg   状态=list   hasMore=false   底部显示「没有更多了」
+
+## 断言
+- 三态文案与按钮各异：空分栏无清除按钮；筛选无结果有「清除筛选」；网络错误有「点击重试」 -> PASS
+- 空封与筛选无结果互斥（依据 filters.length 区分） -> PASS
+- 错误态不显示「没有更多了」 -> PASS（deriveView 单元测试同覆盖）

@@ -1,0 +1,47 @@
+<view class="page">
+  <view class="tabs-wrap">
+    <t-tabs value="{{currentTab}}" bind:change="onTabsChange" t-class="page-tabs">
+      <t-tab-panel wx:for="{{tabs}}" wx:key="key" label="{{item.label}}" value="{{item.key}}" />
+    </t-tabs>
+  </view>
+
+  <scroll-view class="filter-bar" scroll-x enhanced show-scrollbar="{{false}}" enable-flex>
+    <view class="filter-inner">
+      <view class="chip {{currentFilters.length === 0 ? 'chip--active' : ''}}" bindtap="onTapAll">全部</view>
+      <view wx:for="{{typeOptions}}" wx:key="value"
+            class="chip {{item.selected ? 'chip--active' : ''}}"
+            data-value="{{item.value}}" bindtap="onTapType">{{item.label}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="panels">
+    <view wx:for="{{panels}}" wx:key="key" class="panel" hidden="{{item.key !== currentTab}}">
+      <view wx:if="{{item.view.status === 'loading'}}" class="state">
+        <view class="state__text">加载中…</view>
+      </view>
+
+      <view wx:elif="{{item.view.status === 'error'}}" class="state">
+        <view class="state__icon">!</view>
+        <view class="state__text">网络错误，请稍后重试</view>
+        <t-button theme="primary" size="small" data-tab="{{item.key}}" bind:tap="onRetry">点击重试</t-button>
+      </view>
+
+      <view wx:elif="{{item.view.status === 'empty-tab'}}" class="state">
+        <view class="state__icon">○</view>
+        <view class="state__text">该分栏暂无活动</view>
+      </view>
+
+      <view wx:elif="{{item.view.status === 'empty-filter'}}" class="state">
+        <view class="state__icon">?</view>
+        <view class="state__text">筛选无结果</view>
+        <t-button theme="light" size="small" data-tab="{{item.key}}" bind:tap="onClearFilter">清除筛选</t-button>
+      </view>
+
+      <block wx:else>
+        <event-waterfall items="{{item.items}}" bind:cardtap="onCardTap" />
+        <view wx:if="{{item.view.showLoadingMore}}" class="footer">加载中…</view>
+        <view wx:elif="{{item.view.showNoMore}}" class="footer">没有更多了</view>
+      </block>
+    </view>
+  </view>
+</view>

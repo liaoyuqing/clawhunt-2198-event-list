@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/event/list",
+    "pages/event/detail"
+  ],
+  "window": {
+    "navigationBarTitleText": "会员活动",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f5f6f8"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

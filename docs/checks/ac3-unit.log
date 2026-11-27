@@ -1,0 +1,23 @@
+﻿node.exe : [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cj
+s-node-api-deprecated for more details.[39m
+At line:1 char:1
++ & "E:\node-v26/node.exe" "E:\node-v26/node_modules/npm/bin/npx-cli.js ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([33mThe CJS bu...e details.[39m:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+ RUN  v2.1.8 E:/AI接单/Clawhunt/delivery/work/2198/repo
+
+ ✓ tests/feed-controller.spec.ts > AC3 快速连续触底只发一次分页请求 > 同一时刻连续触底 5 次只发 1 次分页请求
+ ✓ tests/feed-controller.spec.ts > AC3 快速连续触底只发一次分页请求 > 首次分页请求返回前再次触底被闸门拒绝
+ ✓ tests/feed-controller.spec.ts > AC3 快速连续触底只发一次分页请求 > 首屏返回后触底带 cursor=10，成功后游标推进
+ ✓ tests/feed-controller.spec.ts > AC3 快速连续触底只发一次分页请求 > 距底不足阈值时不触发请求
+ ✓ tests/feed-controller.spec.ts > AC3 快速连续触底只发一次分页请求 > hasMore=false 后触底不再发请求
+ ✓ tests/feed-controller.spec.ts > AC3 快速连续触底只发一次分页请求 > 请求失败后释放闸门，下次触底可重试
+
+ Test Files  1 passed | 1 skipped (2)
+      Tests  6 passed | 19 skipped (25)
+   Start at  13:56:48
+   Duration  3.53s (transform 165ms, setup 0ms, collect 213ms, tests 46ms, environment 0ms, prepare 190ms)
+

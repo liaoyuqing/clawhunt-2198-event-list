@@ -1,0 +1,5 @@
+<view class="detail">
+  <view class="detail__title">活动详情</view>
+  <view class="detail__id">活动编号：{{id}}</view>
+  <view class="detail__hint">本页为列表卡片跳转的目标页，承接 pages/event/detail?id= 路由。</view>
+</view>

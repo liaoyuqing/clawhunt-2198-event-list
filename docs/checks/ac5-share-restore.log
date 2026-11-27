@@ -1,0 +1,21 @@
+# AC5 从分享卡片进入时恢复分享者的分栏与筛选
+# 取证方式：模拟分享卡片进入——用分享 path 重新打开页面（wx.navigateTo 带完整 query），再核对 onShareAppMessage 生成的 path 与恢复后的分栏/筛选
+
+## 1) 在 upcoming 分栏选两个类型后，onShareAppMessage 返回的 path
+path = /pages/event/list?tab=upcoming&types=theme_salon,roadshow
+断言：path 含 tab=upcoming 且含 types=theme_salon,roadshow（逗号未被二次编码 %2C）-> PASS
+
+## 2) 用该 path 重新进入后页面状态
+{
+  "currentTab": "upcoming",
+  "filters": [
+    "theme_salon",
+    "roadshow"
+  ]
+}
+断言：currentTab='upcoming' 且 filters=['theme_salon','roadshow'] -> PASS
+
+## 3) 恢复后首个请求（页面请求日志）
+[feed] request tab=upcoming kind=first types=theme_salon,roadshow cursor=null
+
+断言：首个请求 tab=upcoming、types=theme_salon,roadshow 且不带 cursor -> PASS

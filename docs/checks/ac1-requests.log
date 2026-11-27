@@ -1,0 +1,21 @@
+# AC1 三分栏来回切换，每分栏首屏只请求一次
+# 取证方式：微信开发者工具 simulator_refresh 后，用 automation_evaluate 依次点击三个 t-tabs 分栏并读取页面内的请求日志缓冲（__feedLog，由 [feed] 日志注入）
+# 操作序列：upcoming -> review -> enrolling -> upcoming -> review -> enrolling
+
+## 采集到的请求/切换日志（原文）
+[feed] request tab=enrolling kind=first types= cursor=null
+[feed] request tab=upcoming kind=first types= cursor=null
+[feed] request tab=review kind=first types= cursor=null
+[feed] switch tab=enrolling cached loaded=true skip request
+[feed] switch tab=upcoming cached loaded=true skip request
+[feed] switch tab=review cached loaded=true skip request
+[feed] switch tab=enrolling cached loaded=true skip request
+
+## 断言
+每个分栏 kind=first 请求计数：
+  enrolling = 1
+  upcoming = 1
+  review = 1
+
+切回已加载分栏时均打印 'cached loaded=true skip request'，不再发请求。
+结论：PASS 每个分栏首屏只请求一次（三轮来回后各 1 次）

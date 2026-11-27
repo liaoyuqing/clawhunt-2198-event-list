@@ -1,0 +1,22 @@
+﻿node.exe : [33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cj
+s-node-api-deprecated for more details.[39m
+At line:1 char:1
++ & "E:\node-v26/node.exe" "E:\node-v26/node_modules/npm/bin/npx-cli.js ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([33mThe CJS bu...e details.[39m:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+ RUN  v2.1.8 E:/AI接单/Clawhunt/delivery/work/2198/repo
+
+ ✓ tests/feed-controller.spec.ts > AC2 选中两个类型后 types=a,b 且游标重置 > 选择两个类型后请求 types 为逗号串且 cursor 为 null
+ ✓ tests/feed-controller.spec.ts > AC2 选中两个类型后 types=a,b 且游标重置 > 已翻到第二页后改筛选，游标被重置（请求不带旧游标）
+ ✓ tests/feed-controller.spec.ts > AC2 选中两个类型后 types=a,b 且游标重置 > 筛选变更时先清空 items，再拉新数据
+ ✓ tests/feed-controller.spec.ts > AC2 选中两个类型后 types=a,b 且游标重置 > 连续点选两个类型只发一次请求（防抖合并）
+ ✓ tests/feed-controller.spec.ts > AC2 选中两个类型后 types=a,b 且游标重置 > 选「全部」（清空）后 types 为空、cursor 归零
+
+ Test Files  1 passed | 1 skipped (2)
+      Tests  5 passed | 20 skipped (25)
+   Start at  13:56:40
+   Duration  3.21s (transform 163ms, setup 0ms, collect 210ms, tests 260ms, environment 0ms, prepare 181ms)
+
